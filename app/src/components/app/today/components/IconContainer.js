@@ -11,21 +11,19 @@ import PropTypes from 'prop-types'
 const log = console.log // eslint-disable-line no-unused-vars
 
 /*********************************
-  LOCAL API
-*********************************/
-
-/*********************************
   COMPONENTS
 *********************************/
+import WeatherLine from '../../weather_line/WeatherLine'
 
 /*********************************
-  LOCAL STYLE
+  IMG
 *********************************/
+import sunny from '../../../../assets/img/weather/sunny.svg'
 
 /*********************************
-  TEMP
+  Icon Container
 *********************************/
-class TEMP extends Component {
+class IconContainer extends Component {
   
   constructor(props) {
     super(props)
@@ -39,9 +37,13 @@ class TEMP extends Component {
   }
 
   render() {
+    const _props = this.props
     return (
-      <div className='app-cont'>
-        TEMP
+      <div className='app-icon-container-main'>
+        <div className='img-container'>
+          <img className='app-icon' src={sunny} />
+        </div>
+        
       </div>
     )
   }
@@ -51,8 +53,8 @@ const mapStateToProps = state => ({
   sys_state: state
 })
 
-TEMP.propTypes = {
+IconContainer.propTypes = {
   sys_state: PropTypes.object
 }
 
-export default connect(mapStateToProps)(TEMP)
+export default connect(mapStateToProps)(IconContainer)

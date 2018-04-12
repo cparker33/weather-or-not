@@ -4,6 +4,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
+import TransitionGroup from 'react-addons-transition-group'
 
 /*********************************
   DEV
@@ -11,37 +12,45 @@ import PropTypes from 'prop-types'
 const log = console.log // eslint-disable-line no-unused-vars
 
 /*********************************
-  LOCAL API
-*********************************/
-
-/*********************************
   COMPONENTS
 *********************************/
-
+import Line from './Line'
 /*********************************
-  LOCAL STYLE
+  TEXT INPUT
 *********************************/
-
-/*********************************
-  TEMP
-*********************************/
-class TEMP extends Component {
+class WeatherLine extends Component {
   
   constructor(props) {
     super(props)
     this.state = {
-      cal: 'par'
+      show_line: false
     }
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0)
+    this.handleAnimationState()
   }
 
+  handleAnimationState = (()=> {
+    setTimeout(()=> { 
+      this.setState({show_line: true})
+    }, 1000)
+  }).bind(this)
+
   render() {
+    const _props = this.props
+    const _state = this.state
     return (
-      <div className='app-cont'>
-        TEMP
+      <div className='weather-line-conatainer'>
+        {
+          (()=> {
+            if (_state.show_line) {
+              return (
+                <Line height={_props.height} />
+              )
+            }
+          })()
+        }        
       </div>
     )
   }
@@ -51,8 +60,8 @@ const mapStateToProps = state => ({
   sys_state: state
 })
 
-TEMP.propTypes = {
+WeatherLine.propTypes = {
   sys_state: PropTypes.object
 }
 
-export default connect(mapStateToProps)(TEMP)
+export default connect(mapStateToProps)(WeatherLine)

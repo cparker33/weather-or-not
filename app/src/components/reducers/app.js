@@ -1,5 +1,10 @@
 const init_state = {
-  name: 'cpardat' 
+  weather_data: {
+    city: null,
+    today_items: null,
+    week_items: null,
+    has_data: false
+  }
 }
 
 // DEV
@@ -7,21 +12,17 @@ const log = console.log // eslint-disable-line no-unused-vars
 
 
 export function app_reducer(state = init_state, action) {
-  
   switch (action.type) {
-
-//  ....
-    case 'GET_DATA':
+/*********************************
+  HANDLE WEATHER DATA
+*********************************/
+    case 'SET_WTHR_DATA':
       return {
         ...state,
-        cData: [action.action]
+        weather_data: action.weather_data
       }
-//  ....
-
 
     default:
       return state
-
-//  ....
   }
 }

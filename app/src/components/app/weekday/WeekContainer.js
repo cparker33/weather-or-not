@@ -17,6 +17,7 @@ const log = console.log // eslint-disable-line no-unused-vars
 /*********************************
   COMPONENTS
 *********************************/
+import WeekDay from './WeekDay'
 
 /*********************************
   LOCAL STYLE
@@ -25,7 +26,7 @@ const log = console.log // eslint-disable-line no-unused-vars
 /*********************************
   TEMP
 *********************************/
-class TEMP extends Component {
+class WeekContainer extends Component {
   
   constructor(props) {
     super(props)
@@ -40,8 +41,11 @@ class TEMP extends Component {
 
   render() {
     return (
-      <div className='app-cont'>
-        TEMP
+      <div className='week-container'>
+        <WeekDay />
+        <WeekDay />
+        <WeekDay />
+        <WeekDay />
       </div>
     )
   }
@@ -51,8 +55,8 @@ const mapStateToProps = state => ({
   sys_state: state
 })
 
-TEMP.propTypes = {
+WeekContainer.propTypes = {
   sys_state: PropTypes.object
 }
 
-export default connect(mapStateToProps)(TEMP)
+export default connect(mapStateToProps)(WeekContainer)

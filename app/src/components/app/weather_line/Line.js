@@ -4,23 +4,25 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
+import { TweenMax } from 'gsap'
 
 /*********************************
   DEV
 *********************************/
 const log = console.log // eslint-disable-line no-unused-vars
 
-/*********************************
-  LOCAL API
-*********************************/
-import { getWeatherData } from '../../components/api/app'
-
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import TransitionGroup from 'react-addons-transition-group'
 
 /*********************************
   COMPONENTS
 *********************************/
-import ZipcodeCard from '../../components/app/zipcode_card/ZipcodeCard'
-import MainView from '../../components/app/main_view/MainView'
+
+
+/*********************************
+  LOCAL STYLE
+*********************************/
+// import sunny from '../../assets/img/weather/sunny.svg'
 
 /*********************************
   HOMEPAGE
@@ -30,34 +32,23 @@ class HomePage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      has_data: false
+      country_is_toggled: false
     }
   }
 
-  componentDidMount() {
-    // ...    
+  componentDidMount(callback) {
+    const el = this.container
+    TweenMax.fromTo(el, 0.8, {height: 0, opacity: 1}, {height: this.props.height, opacity: 1, onComplete: callback});
+  }
+
+  componentWillUnmount(callback) {
+    const el = this.container
+    TweenMax.fromTo(el, 0, {height: this.props.height, opacity: 1}, {height: 0, opacity: 1, onComplete: callback});
   }
 
   render() {
-    const _state = this.state
-    const _props = this.props
-    const has_data = _props.sys_state.app_state.weather_data.has_data
     return (
-      <div className='app-component-wrapper'>
-        {
-          (()=> {
-            if (!has_data) {
-              return (
-                <ZipcodeCard />
-              )
-            } else {
-              return (
-                <MainView />
-              )
-            }
-          })()
-        }        
-      </div>
+      <div className='weather-line' ref={(cont)=> {this.container = cont}} />
     )
   }
 }

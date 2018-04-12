@@ -29,7 +29,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
-// color-primary-3
+
 .app-footer {
   width: 100%;
   height: 50px;
@@ -65,37 +65,82 @@ body {
 }
 
 
-.zip-form-card {
+
+  .zip-form-card {
+    @include flex-row-around;
+    @include push-auto;
+    @include flex-col-around;
+    background-image: radial-gradient(ellipse farthest-corner at 45px 45px, rgba(236, 164, 0, 0.3) 0%, rgba(0, 29, 74, 0.2) );
+    // background-image: radial-gradient(ellipse farthest-corner at 45px 45px, rgba(50, 50, 50, 0.8) 0%, rgba(80, 80, 80, 0.2) );
+    background-color: $color-primary-2;
+    margin-top: 80px;
+    height: 300px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    border: 1px solid black; 
+
+    .app-card-inner {
+      @include push-auto;
+      @include flex-col-around;
+      border: 1px solid green; 
+      margin-top: 0px;
+      
+      height: inherit;
+    }
+
+    .zip-card-main {
+      border: 1px solid red;
+      @include push-auto;
+      @include flex-row-around;
+
+      margin-top: 0px;
+      height: 300px;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    .zip-text-input-wrapper {
+      @include push-auto;
+      @include flex-row-around;
+      width: 300px;
+      height: 50px;
+      // border: 1px solid #EEE;
+    }
+
+    .app-card-title {
+      font-family: $font1;
+      text-align: center;
+    }
+
+    .app-card-inst {
+      @include push-auto;
+      width: 80%;
+      text-align: center;
+      font-size: 12px;
+      font-family: $font1;
+    }
+  }
+
+
+
+
+
+
+.main-view-container {
   @include push-auto;
   @include flex-col-around;
-  background-image: radial-gradient(ellipse farthest-corner at 45px 45px, rgba(236, 164, 0, 0.3) 0%, rgba(0, 29, 74, 0.2) );
-  // background-image: radial-gradient(ellipse farthest-corner at 45px 45px, rgba(50, 50, 50, 0.8) 0%, rgba(80, 80, 80, 0.2) );
-  background-color: $color-primary-2;
-  margin-top: 80px;
-  height: 300px;
-  width: 80%;
-  max-width: 600px;
-  border-radius: 10px;
+  margin-top: 10px;
+  width: 99%;
+  max-width: 800px;
+  // border: 1px solid red;
+  
 
-  .zip-text-input-wrapper {
-    @include push-auto;
-    @include flex-row-around;
-    width: 300px;
-    height: 50px;
-    // border: 1px solid #EEE;
-  }
-
-  .app-card-title {
-
-    text-align: center;
-  }
-
-  .app-card-inst {
-    @include push-auto;
-    width: 80%;
-    text-align: center;
-    font-size: 12px;
-    font-family: $mont-font;
+  .main-view-day-wrapper {
+    height: 400px;
+    // height: unquote("calc(100% - 50px)");
+    overflow: hidden;
+    overflow-y: scroll;
   }
 }
 
@@ -104,10 +149,13 @@ body {
 
 
 
-// COMPONENT
-.app-text-input:focus{
-  outline: none;
-  border-color: #FFF;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+
+
+
+
+
+
+.app-box {
+  border: 1px solid #000;
+  width: 2px;
 }

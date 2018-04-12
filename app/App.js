@@ -28,7 +28,7 @@ class App extends Component {
           </div>
           <div className='footer-usa-disc'>
             <p>
-              ** US only
+              ***USA Only
             </p>
           </div>
         </div>

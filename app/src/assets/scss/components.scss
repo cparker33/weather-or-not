@@ -1,0 +1,136 @@
+/*********************************
+  DAY CONTAINER
+*********************************/
+.day-container {
+  @include push-auto;
+  @include flex-row-around;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 90%;
+  border: 1px solid #000;
+  height: 120px;
+
+  .app-icon-container-main{
+    width: 120px;
+    height: 120px;
+    border: 1px solid #000;
+
+    .img-container {
+      @include push-auto;
+      width: 80px;
+      height: 80px;
+
+      .app-icon {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+
+
+  .app-city-info-container {
+    @include flex-col-around;
+    width: 250px;
+    padding: 2px;
+    height: 120px;
+    .sun-action-container {
+      @include flex-row-around;
+    }
+    .city-info-city {
+      font-size: 16px; 
+      font-size: 3vw;
+      font-family: $font1;
+      text-align: center;
+    }
+    .city-info-date {
+      font-family: $font2;
+      text-align: center;
+    }
+    .sun-action-item {
+      @include flex-row-around;
+
+      .sun-img {
+        margin-left: 5px;
+      }
+    }
+  }
+
+
+
+
+
+  .app-temp-container-main{
+    width: 120px;
+    height: 120px;
+    border: 1px solid #000;
+
+    .temp-container {
+      font-size: 22px; 
+      font-family: $font2;
+      text-align: center;
+    }
+  }
+
+
+
+
+
+}
+
+
+
+
+
+
+
+/*********************************
+  WEEK CONTAINER
+*********************************/
+.week-container {
+  @include push-auto;
+  @include flex-row-around;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 95%;
+  height: 120px;
+  // border: 1px solid #000;
+
+  .week-day-container {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 23%;
+    height: 105px;
+    border: 1px solid #000;
+    
+  }
+
+}
+
+.app-text-input:focus{
+  outline: none;
+  border-color: #FFF;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+
+
+.weather-line-conatainer {
+  width: 20px;
+  margin-left: 40px; 
+  margin-top: 0px;
+  position: absolute;
+  overflow: hidden;
+
+  .weather-line {
+    width: 0px;
+    margin-top: 0px;
+    box-shadow: 12px 0px 10px 2px yellow;
+  }
+
+}
+
+
+
+
+
