@@ -12,6 +12,8 @@ import TransitionGroup from 'react-addons-transition-group'
 *********************************/
 const log = console.log // eslint-disable-line no-unused-vars
 
+import { clearWeatherData } from '../../api/app'
+
 /*********************************
   COMPONENTS
 *********************************/
@@ -30,6 +32,10 @@ class MainView extends Component {
     }
   }
 
+  handleBackClick = (()=> {
+    clearWeatherData()
+  })
+
   render() {
     const _props = this.props
     const app_state = _props.sys_state.app_state
@@ -39,6 +45,9 @@ class MainView extends Component {
     return (
 
       <div className='main-view-container'>
+        <div className='app-back-btn' onClick={this.handleBackClick}>
+          <i className='fa fa-arrow-circle-left' />
+        </div>
         <TransitionGroup>
           <DayContainer city={weather_data.city}  today_item={weather_data.today_obj} />
         </TransitionGroup>

@@ -13,10 +13,6 @@ import moment from 'moment'
 const log = console.log // eslint-disable-line no-unused-vars
 
 /*********************************
-  LOCAL API
-*********************************/
-
-/*********************************
   COMPONENTS
 *********************************/
 import Weather from './components/Weather'
@@ -86,7 +82,6 @@ class DayContainer extends Component {
   render() {
     const _props = this.props
     const today_item = _props.today_item
-    // log('today_item-> ', today_item)
     return (
       <div className='day-container' ref={(cont)=> {this.container = cont}}>
           <CityInfo city={_props.city} 
@@ -109,17 +104,3 @@ DayContainer.propTypes = {
 }
 
 export default connect(mapStateToProps)(DayContainer)
-
-/**
-  <TransitionGroup>
-          {
-            (()=> {
-              if (this.state.shouldShowBox) {
-                return (
-                  <Box key={12} />
-                )
-              }
-            })()
-          }
-        </TransitionGroup>
- */

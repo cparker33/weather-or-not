@@ -50,7 +50,7 @@ class TextInput extends Component {
     return (
       <div className="input-group mb-3" style={{maxWidth: _props.maxWidth}}>
         <input aria-describedby="basic-addon2" className="form-control app-text-input" 
-        onChange={this.handleTextInput}  placeholder={_props.placeholder} type="text" 
+          onChange={this.handleTextInput}  placeholder={_props.placeholder} type="text" 
         />
         <div className="input-group-append">
           <span className="input-group-text" id="basic-addon2"> 

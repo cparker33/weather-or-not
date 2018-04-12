@@ -123,10 +123,6 @@ body {
   }
 
 
-
-
-
-
 .main-view-container {
   @include push-auto;
   @include flex-col-around;
@@ -142,6 +138,16 @@ body {
     overflow: hidden;
     overflow-y: scroll;
   }
+
+  .app-back-btn {
+    i {
+      font-size: 40px;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
 }
 
 

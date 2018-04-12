@@ -78,3 +78,24 @@ export const getWeatherData = (async (zip)=> {
 
 })
 
+
+
+/*********************************
+  CLEAR WEATHER DATA
+**********************************/
+export const clearWeatherData = (async ()=> {
+  let weather_data = {
+    city: null,
+    time_stamp: null,
+    today_obj: null,
+    forecast_list: null,
+    has_data: false
+  }  
+
+  // SEND TO STORE
+  store.dispatch({
+    type: 'SET_WTHR_DATA',
+    weather_data
+  })
+})
+
