@@ -14,12 +14,10 @@ const log = console.log // eslint-disable-line no-unused-vars
   WEATHER API
 **********************************/
 const weather_url = 'http://api.openweathermap.org/data/2.5/'
-
 const weather_key = '?id=524901&APPID=abce63bf5700e4817b48a4baf02a0837'
 
-// api.openweathermap.org/data/2.5/weather
 
-function weather_api(data) {
+function weather_api() {
   return axios.create({
     baseURL: weather_url
   })
@@ -29,7 +27,7 @@ function weather_api(data) {
   GET WEATHER DATA
 **********************************/
 export const getWeatherData = (async (zip)=> {
-  zip = '89123' // DEV
+  // zip = '89123' // DEV
 
   const _api = weather_api()
   let country = 'us'

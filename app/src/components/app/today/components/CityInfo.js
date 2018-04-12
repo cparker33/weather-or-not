@@ -33,11 +33,6 @@ class CityInfo extends Component {
     }
   }
 
-  componentDidMount() {
-    window.scrollTo(0, 0)
-    // let day_time = moment(td.dt, 'ms').format('MM-DD-YYYY HH:mm')
-  }
-
   getDateTime = ((ms)=> {
     return moment(ms, 'X').format('hh:mm')
   })
@@ -61,7 +56,7 @@ class CityInfo extends Component {
 
           <div className='sun-action-item'>
             <div>
-            {`${this.getDateTime(_props.sun_actions.sunset)} am` }
+            {`${this.getDateTime(_props.sun_actions.sunset)} pm` }
             </div>
             <div>
               <img className='sun-img' src={sunset} />

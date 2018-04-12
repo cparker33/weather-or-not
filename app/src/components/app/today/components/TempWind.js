@@ -13,14 +13,13 @@ const log = console.log // eslint-disable-line no-unused-vars
 /*********************************
   COMPONENTS
 *********************************/
-import WeatherLine from '../../weather_line/WeatherLine'
 
 /*********************************
   IMG
 *********************************/
-import sunny from '../../../../assets/img/weather/sunny.svg'
+import temp_wind from '../../../../assets/img/sun_actions/wind.svg'
 
-var dir_list = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
+var dir_list = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW']
 
 /*********************************
   Temp Wind
@@ -57,12 +56,19 @@ class TempWind extends Component {
           <p>{`${this.getFahrenheit(_props.temps.temp)} ˚`}</p>
         </div>
         <div className='wind-container'>
+
           <div className='wind-speed'>
-            {`${_props.wind.speed} mph`}
+            {`${_props.wind.speed}`}
           </div>
+
           <div className='wind-dir'>
             {this.getWindDir(_props.wind.deg)}
           </div>
+
+          <div className='wind-icon'>
+            <img src={temp_wind} />
+          </div>
+          
         </div>
         
       </div>

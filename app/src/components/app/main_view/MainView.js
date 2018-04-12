@@ -4,9 +4,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import moment from 'moment'
-import shortid from 'shortid'
-
+import shortid from 'shortid' // eslint-disable-line no-unused-vars
 import TransitionGroup from 'react-addons-transition-group'
 
 /*********************************
@@ -15,19 +13,10 @@ import TransitionGroup from 'react-addons-transition-group'
 const log = console.log // eslint-disable-line no-unused-vars
 
 /*********************************
-  LOCAL API
-*********************************/
-
-
-/*********************************
   COMPONENTS
 *********************************/
 import DayContainer from '../today/DayContainer'
-import WeekContainer from '../weekday/WeekContainer'
-
-/*********************************
-  LOCAL STYLE
-*********************************/
+import WeekContainer from '../weekday/WeekContainer' // eslint-disable-line no-unused-vars
 
 /*********************************
   TEMP
@@ -41,31 +30,21 @@ class MainView extends Component {
     }
   }
 
-  componentDidMount() {
-    // ...
-  }
-
   render() {
-    const _state = this.state
     const _props = this.props
     const app_state = _props.sys_state.app_state
     const weather_data = app_state.weather_data
-    const has_data = weather_data.has_data
-
     log('weather_data-> ', weather_data)
 
     return (
 
       <div className='main-view-container'>
+        <TransitionGroup>
+          <DayContainer city={weather_data.city}  today_item={weather_data.today_obj} />
+        </TransitionGroup>
 
-
-        <DayContainer city={weather_data.city}  today_item={weather_data.today_obj} />
-
-        <section className='main-view-day-wrapper'>
-          
-        </section>
+        <section className='main-view-day-wrapper' />
         {/* key={shortid.generate()}  */}
-
       </div>
     )
   }

@@ -13,7 +13,6 @@ const log = console.log // eslint-disable-line no-unused-vars
 /*********************************
   COMPONENTS
 *********************************/
-import WeatherLine from '../../weather_line/WeatherLine'
 
 /*********************************
   IMG
@@ -23,7 +22,7 @@ import sunny from '../../../../assets/img/weather/sunny.svg'
 /*********************************
   Icon Container
 *********************************/
-class IconContainer extends Component {
+class Weather extends Component {
   
   constructor(props) {
     super(props)
@@ -39,9 +38,14 @@ class IconContainer extends Component {
   render() {
     const _props = this.props
     return (
-      <div className='app-icon-container-main'>
-        <div className='img-container'>
-          <img className='app-icon' src={sunny} />
+      <div className='app-weather-container'>
+
+        <div className='weather-img-conatainer'>
+          <img className='weather-img' src={sunny} />
+        </div>
+
+        <div className='weather-disc'>
+          {_props.weather.main}
         </div>
         
       </div>
@@ -53,8 +57,8 @@ const mapStateToProps = state => ({
   sys_state: state
 })
 
-IconContainer.propTypes = {
+Weather.propTypes = {
   sys_state: PropTypes.object
 }
 
-export default connect(mapStateToProps)(IconContainer)
+export default connect(mapStateToProps)(Weather)
