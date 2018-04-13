@@ -15,18 +15,12 @@ const log = console.log // eslint-disable-line no-unused-vars
 /*********************************
   LOCAL API
 *********************************/
-import { getWeatherData } from '../../api/app'
+import { getWeatherData, clearWeatherData } from '../../api/app'
 
 /*********************************
   COMPONENTS
 *********************************/
 import TextInput from '../common/TextInput'
-import WeatherLine from '../weather_line/WeatherLine'
-
-/*********************************
-  LOCAL STYLE
-*********************************/
-// import sunny from '../../assets/img/weather/sunny.svg'
 
 /*********************************
   HOMEPAGE
@@ -41,9 +35,7 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    setTimeout(()=> { 
-      getWeatherData() // DEV 
-    }, 1000)
+    setTimeout(()=> { getWeatherData(89123) }, 1000) // DEV // 98101 99501
   }
 
   handleZipInput = ((zipcode)=> {
@@ -54,16 +46,15 @@ class HomePage extends Component {
     let zip = this.state.zipcode
     getWeatherData(zip)
   })
-  
-  
 
-
+  handleBackClick = (()=> {
+    clearWeatherData()
+  })
+  
   render() {
-
     return (
       <div className='app-component-wrapper'>
         <section className='zip-form-card'>
-          { /* <WeatherLine height='300px' /> */}
           <article className='app-card-title'>
             <RubberBand delay={1000}>
               <h3>Weather Or Not</h3>
@@ -72,7 +63,7 @@ class HomePage extends Component {
           <article className='zip-text-input-wrapper'>
             <div>
               <TextInput icon='fa fa-map' maxWidth='220px' 
-                placeholder='Zip Code' onChange={this.handleZipInput}
+                onChange={this.handleZipInput} placeholder='Zip Code' 
               />
             </div>
           <div>
@@ -86,9 +77,6 @@ class HomePage extends Component {
               <p>Enter a zip code and press Go!</p>
             </Tada>
           </article>
-                
-
-
         </section>
       </div>
     )

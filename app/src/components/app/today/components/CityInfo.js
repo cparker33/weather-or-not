@@ -12,14 +12,10 @@ import moment from 'moment'
 const log = console.log // eslint-disable-line no-unused-vars
 
 /*********************************
-  COMPONENTS
+  IMG
 *********************************/
-
-/*********************************
-  COMPONENTS
-*********************************/
-import sunrise from '../../../../assets/img/sun_actions/sunrise.svg'
-import sunset from '../../../../assets/img/sun_actions/sunset.svg'
+import sunrise from '../../../../assets/img/weather_icons/sunrise.svg'
+import sunset from '../../../../assets/img/weather_icons/sunset.svg'
 
 /*********************************
   CITY INFO 
@@ -33,11 +29,6 @@ class CityInfo extends Component {
     }
   }
 
-  componentDidMount() {
-    window.scrollTo(0, 0)
-    // let day_time = moment(td.dt, 'ms').format('MM-DD-YYYY HH:mm')
-  }
-
   getDateTime = ((ms)=> {
     return moment(ms, 'X').format('hh:mm')
   })
@@ -49,7 +40,6 @@ class CityInfo extends Component {
         <div className='city-info-city'>{_props.city}</div>
         <div className='city-info-date'>{_props.date}</div>
         <div className='sun-action-container'>
-
           <div className='sun-action-item'>
             <div>
             {`${this.getDateTime(_props.sun_actions.sunrise)} am` }
@@ -58,18 +48,14 @@ class CityInfo extends Component {
               <img className='sun-img' src={sunrise} />
             </div>
           </div>
-
           <div className='sun-action-item'>
             <div>
-            {`${this.getDateTime(_props.sun_actions.sunset)} am` }
+            {`${this.getDateTime(_props.sun_actions.sunset)} pm` }
             </div>
             <div>
               <img className='sun-img' src={sunset} />
             </div>
           </div>
-
-
-
         </div>
       </div>
     )

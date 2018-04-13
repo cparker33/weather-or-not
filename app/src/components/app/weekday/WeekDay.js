@@ -40,9 +40,8 @@ class WeekDay extends Component {
 
   render() {
     return (
-      <div className='week-day-container'>
+      <div className='week-day-container' />
         
-      </div>
     )
   }
 }

@@ -11,12 +11,6 @@ import PropTypes from 'prop-types'
 const log = console.log // eslint-disable-line no-unused-vars
 
 /*********************************
-  LOCAL API
-*********************************/
-import { getWeatherData } from '../../components/api/app'
-
-
-/*********************************
   COMPONENTS
 *********************************/
 import ZipcodeCard from '../../components/app/zipcode_card/ZipcodeCard'
@@ -39,7 +33,6 @@ class HomePage extends Component {
   }
 
   render() {
-    const _state = this.state
     const _props = this.props
     const has_data = _props.sys_state.app_state.weather_data.has_data
     return (
@@ -52,7 +45,7 @@ class HomePage extends Component {
               )
             } else {
               return (
-                <MainView />
+                <MainView has_data={has_data} />
               )
             }
           })()
