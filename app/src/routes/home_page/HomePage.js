@@ -45,7 +45,7 @@ class HomePage extends Component {
               )
             } else {
               return (
-                <MainView />
+                <MainView has_data={has_data} />
               )
             }
           })()

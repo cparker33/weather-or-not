@@ -31,6 +31,7 @@ class DayContainer extends Component {
     }
   }
 
+
   componentDidMount(callback) {
     let time_color = this.setTimeColor()
     const el = this.container
@@ -43,8 +44,8 @@ class DayContainer extends Component {
       y: 0, 
       opacity: 1, 
       backgroundColor: time_color, 
-      onComplete: callback,
-      ease: Power4.easeOut
+      ease: Power4.easeOut,
+      onComplete: callback
     })
   }
 
@@ -52,28 +53,28 @@ class DayContainer extends Component {
     const el = this.container
     TweenMax.fromTo(el, 0.5, 
       {
-        height: 200, 
+        y: 0, 
         opacity: 1
       }, 
       {
-        height: 10, 
+        y: 300, 
         opacity: 0, 
-        onComplete: callback,
-        ease: Power4.easeIn
+        ease: Power4.easeIn,
+        onComplete: callback
       })
   }
 
   setTimeColor = (()=> {
     let time_color
-    let hour = moment().format('HH')
+    let hour = moment().format('H')
     hour = Number(hour)
-    if (hour < 8) {
-      time_color = '#f9c10f'
+    if (hour <= 9 && hour > 5) {
+      time_color = '#cfecf7'
     }
-    if (hour > 8 && hour < 5) {
-      time_color = '#639fb6'
+    if (hour > 9 && hour < 17) {
+      time_color = '#62c1e5'
     }
-    if (hour > 5) {
+    if (hour >= 17 || hour < 4) {
       time_color = '#4B8296'
     }
     return time_color

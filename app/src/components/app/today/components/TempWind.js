@@ -11,15 +11,15 @@ import PropTypes from 'prop-types'
 const log = console.log // eslint-disable-line no-unused-vars
 
 /*********************************
-  COMPONENTS
+  LOCAL API
 *********************************/
+import { getFahrenheit, getWindDir } from '../../../api/app'
 
 /*********************************
   IMG
 *********************************/
-import temp_wind from '../../../../assets/img/sun_actions/wind.svg'
+import temp_wind from '../../../../assets/img/weather_icons/wind.svg'
 
-var dir_list = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW']
 
 /*********************************
   Temp Wind
@@ -37,23 +37,12 @@ class TempWind extends Component {
     window.scrollTo(0, 0)
   }
 
-  getFahrenheit = ((cel)=> {
-    let fah = (cel - 273.15) * 1.8 + 32
-    return Math.round(fah)
-  })
-
-  getWindDir = ((angle)=> {
-    var dir = Math.floor((angle / 22.5) + 0.5)
-    return dir_list[(dir % 16)]
-  })
-  
-
   render() {
     const _props = this.props
     return (
       <div className='app-temp-container-main'>
         <div className='temp-container'>
-          <p>{`${this.getFahrenheit(_props.temps.temp)} ˚`}</p>
+          <p>{`${getFahrenheit(_props.temps.temp)} ˚`}</p>
         </div>
         <div className='wind-container'>
 
@@ -62,7 +51,7 @@ class TempWind extends Component {
           </div>
 
           <div className='wind-dir'>
-            {this.getWindDir(_props.wind.deg)}
+            {getWindDir(_props.wind.deg)}
           </div>
 
           <div className='wind-icon'>

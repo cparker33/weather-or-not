@@ -15,7 +15,7 @@ const log = console.log // eslint-disable-line no-unused-vars
 /*********************************
   LOCAL API
 *********************************/
-import { getWeatherData } from '../../api/app'
+import { getWeatherData, clearWeatherData } from '../../api/app'
 
 /*********************************
   COMPONENTS
@@ -35,7 +35,7 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    setTimeout(()=> { getWeatherData(89123) }, 1000) // DEV
+    setTimeout(()=> { getWeatherData(89123) }, 1000) // DEV // 98101 99501
   }
 
   handleZipInput = ((zipcode)=> {
@@ -45,6 +45,10 @@ class HomePage extends Component {
   handleButtonClick = (()=> {
     let zip = this.state.zipcode
     getWeatherData(zip)
+  })
+
+  handleBackClick = (()=> {
+    clearWeatherData()
   })
   
   render() {

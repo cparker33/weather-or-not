@@ -16,7 +16,8 @@ html {box-sizing: border-box;}
 
 
 body {
-  background-color: $color-primary-1;
+  // background-color: $color-primary-1;
+  background: radial-gradient($color3,$color5);
 }
 
 .app-component-wrapper {
@@ -64,7 +65,14 @@ body {
   }
 }
 
-
+.app-back-btn {
+  i {
+    font-size: 40px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
 
   .zip-form-card {
     @include flex-row-around;
@@ -139,14 +147,6 @@ body {
     overflow-y: scroll;
   }
 
-  .app-back-btn {
-    i {
-      font-size: 40px;
-    }
-    &:hover {
-      cursor: pointer;
-    }
-  }
 
 }
 

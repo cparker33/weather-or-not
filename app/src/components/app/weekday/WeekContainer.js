@@ -4,6 +4,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
+import shortid from 'shortid' 
+import TransitionGroup from 'react-transition-group/TransitionGroup'
 
 /*********************************
   DEV
@@ -11,28 +13,18 @@ import PropTypes from 'prop-types'
 const log = console.log // eslint-disable-line no-unused-vars
 
 /*********************************
-  LOCAL API
-*********************************/
-
-/*********************************
   COMPONENTS
 *********************************/
-import WeekDay from './WeekDay'
+import WeekDay from './components/WeekDay'
 
 /*********************************
-  LOCAL STYLE
-*********************************/
-
-/*********************************
-  TEMP
+  WEEK CONTAINER
 *********************************/
 class WeekContainer extends Component {
   
   constructor(props) {
     super(props)
-    this.state = {
-      cal: 'par'
-    }
+    this.state = {}
   }
 
   componentDidMount() {
@@ -40,12 +32,27 @@ class WeekContainer extends Component {
   }
 
   render() {
+    const _props = this.props
     return (
       <div className='week-container'>
-        <WeekDay />
-        <WeekDay />
-        <WeekDay />
-        <WeekDay />
+        {
+          _props.day_items.map((day_item, i)=> {
+            if (i === 0) {
+              return (
+                <TransitionGroup key={shortid.generate()}>
+                  <WeekDay day_item={day_item} delay={i} first key={shortid.generate()} />
+                </TransitionGroup>
+              )
+            } else {
+              return (
+                <TransitionGroup key={shortid.generate()}>
+                  <WeekDay day_item={day_item} delay={i/10} key={shortid.generate()}  />
+                </TransitionGroup>
+              )
+            }
+            
+          })
+        }
       </div>
     )
   }
