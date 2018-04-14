@@ -137,14 +137,15 @@ body {
   margin-top: 10px;
   width: 99%;
   max-width: 800px;
-  // border: 1px solid red;
+  min-height: calc(100vh - 60px);
+
   
 
   .main-view-day-wrapper {
-    height: 400px;
-    // height: unquote("calc(100% - 50px)");
+    height: calc(100vh - 250px);
     overflow: hidden;
     overflow-y: scroll;
+    
   }
 
 

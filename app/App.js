@@ -41,9 +41,5 @@ const mapStateToProps = state => ({
     sys_state: state
 })
 
-App.propTypes = {
-  sys_state: PropTypes.object
-}
-
 export default connect(mapStateToProps)(App)
 

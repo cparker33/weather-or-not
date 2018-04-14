@@ -34,10 +34,6 @@ class TextInput extends Component {
     }
   }
 
-  componentDidMount() {
-    window.scrollTo(0, 0)
-  }
-
   handleTextInput = (e)=> {
     this.props.onChange(e.target.value)
     this.setState({

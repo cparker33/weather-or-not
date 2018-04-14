@@ -1,15 +1,20 @@
-//  STACK
+/*********************************
+  DEPENDENCIES
+*********************************/
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
-// REDUCERS
+/*********************************
+  REDUCERS
+*********************************/
 import { app_reducer } from '../reducers/app'
 
-// MIDDLEWARE
+/*********************************
+  MIDDLEWARE
+*********************************/
 const enhancer = compose(
   applyMiddleware(thunkMiddleware)
 )
-
 
 export const reducers = combineReducers (
   {

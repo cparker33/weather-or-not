@@ -15,7 +15,7 @@ const log = console.log // eslint-disable-line no-unused-vars
 /*********************************
   DEV
 *********************************/
-import { getWeatherImg } from '../../../api/app'
+import { getWeatherImg } from '../../../../api/app'
 
 /*********************************
   WEATHER
