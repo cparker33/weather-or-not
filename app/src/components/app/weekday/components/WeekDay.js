@@ -15,7 +15,7 @@ const log = console.log // eslint-disable-line no-unused-vars
 /*********************************
   LOCAL API
 *********************************/
-import { getFahrenheit, getWindDir, getWeatherImg } from '../../../api/app'
+import { getFahrenheit, getWindDir, getWeatherImg } from '../../../../api/app'
 
 /*********************************
   IMG
@@ -26,12 +26,11 @@ import temp_wind from '../../../../assets/img/weather_icons/wind.svg'
   WEEK DAY
 *********************************/
 class WeekDay extends Component {
-  
+
   constructor(props) {
     super(props)
     this.state = {}
   }
-
 
   componentDidMount(callback) {
     let time_color = this.setTimeColor()
@@ -68,7 +67,6 @@ class WeekDay extends Component {
 
   setTimeColor = (()=> {
     let time_color
-
     let hour = moment((this.getDateTime(this.props.day_item.dt_txt)[1]), 'hha').format('H')
     hour = Number(hour)
     if (hour <= 9 && hour > 5) {
@@ -82,7 +80,6 @@ class WeekDay extends Component {
     }
     return time_color
   })
-
 
   getDateTime = ((dt_txt)=> {
     let dt_txt_split = dt_txt.split(' ')
@@ -105,26 +102,19 @@ class WeekDay extends Component {
     const day_item = _props.day_item
     return (
       <div className='week-day-container' ref={(cont)=> {this.container = cont}}>
-
-      
-        
-
-
         <section className='wk-date-time-img-container'>
-        
-
           <article className='wk-date-time-container'>
           {
-          (()=> {
-            if (_props.first) {
-              return (
-                <span>
-                  {this.getDateTime(day_item.dt_txt)[0]}
-                </span>
-              )
-            }
-          })()
-        }
+            (()=> {
+              if (_props.first) {
+                return (
+                  <span>
+                    {this.getDateTime(day_item.dt_txt)[0]}
+                  </span>
+                )
+              }
+            })()
+          }
             <div>
               {this.getDateTime(day_item.dt_txt)[1]}
             </div>
@@ -142,25 +132,18 @@ class WeekDay extends Component {
             />
           </article>
         </section>
-
         <div className='wind-container'>
-
           <div className='wind-speed'>
             {`${day_item.wind.speed}`}
           </div>
-
           <div className='wind-dir'>
             {getWindDir(day_item.wind.deg)}
           </div>
-
           <div className='wind-icon'>
             <img src={temp_wind} />
           </div>
-          
         </div>
-        
       </div>
-        
     )
   }
 }
@@ -176,3 +159,4 @@ WeekDay.propTypes = {
 }
 
 export default connect(mapStateToProps)(WeekDay)
+

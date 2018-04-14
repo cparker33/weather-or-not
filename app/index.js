@@ -16,7 +16,7 @@ import './src/assets/scss/app.scss'
 /*********************************
   STORE
 *********************************/
-import store from './src/components/store/store'
+import store from './src/store/store'
 
 /*********************************
   APP

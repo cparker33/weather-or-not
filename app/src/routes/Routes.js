@@ -1,8 +1,12 @@
-// DEPENDENCIES
+/*********************************
+  DEPENDENCIES
+*********************************/
 import React from 'react'
 import { Route } from 'react-router-dom' 
 
-// COMPONENTS
+/*********************************
+  ROUTE COMPONENTS
+*********************************/
 import HomePage from './home_page/HomePage'
 
 const Routes = () => (

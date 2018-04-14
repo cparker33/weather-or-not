@@ -13,7 +13,7 @@ const log = console.log // eslint-disable-line no-unused-vars
 /*********************************
   LOCAL API
 *********************************/
-import { getFahrenheit, getWindDir } from '../../../api/app'
+import { getFahrenheit, getWindDir } from '../../../../api/app'
 
 /*********************************
   IMG

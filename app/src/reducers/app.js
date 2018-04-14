@@ -1,3 +1,6 @@
+/*********************************
+  STATE
+*********************************/
 const init_state = {
   weather_data: {
     city: null,
@@ -7,12 +10,19 @@ const init_state = {
   }
 }
 
-// DEV
+/*********************************
+  DEV
+*********************************/
 const log = console.log // eslint-disable-line no-unused-vars
 
 
+/*********************************
+  REDUCER
+*********************************/
 export function app_reducer(state = init_state, action) {
+
   switch (action.type) {
+
 /*********************************
   HANDLE WEATHER DATA
 *********************************/

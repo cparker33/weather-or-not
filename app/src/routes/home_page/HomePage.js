@@ -28,10 +28,6 @@ class HomePage extends Component {
     }
   }
 
-  componentDidMount() {
-    // ...    
-  }
-
   render() {
     const _props = this.props
     const has_data = _props.sys_state.app_state.weather_data.has_data

@@ -15,7 +15,7 @@ const log = console.log // eslint-disable-line no-unused-vars
 /*********************************
   LOCAL API
 *********************************/
-import { clearWeatherData } from '../../api/app'
+import { clearWeatherData } from '../../../api/app'
 
 /*********************************
   COMPONENTS
@@ -27,6 +27,10 @@ import WeekContainer from '../weekday/WeekContainer' // eslint-disable-line no-u
   MAIN VIEW
 *********************************/
 class MainView extends Component {
+
+  static defaultProps = {
+    sys_state:  PropTypes.object
+  }
   
   constructor(props) {
     super(props)
@@ -82,9 +86,5 @@ class MainView extends Component {
 const mapStateToProps = state => ({
   sys_state: state
 })
-
-MainView.propTypes = {
-  sys_state: PropTypes.object
-}
 
 export default connect(mapStateToProps)(MainView)

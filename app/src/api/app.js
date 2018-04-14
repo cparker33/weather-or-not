@@ -19,14 +19,14 @@ const weather_key = '?id=524901&APPID=abce63bf5700e4817b48a4baf02a0837'
 /*********************************
   IMG
 *********************************/
-import day from '../../assets/img/weather_actions/day.svg'
-import night from '../../assets/img/weather_actions/night.svg'
-import cloudy_day from '../../assets/img/weather_actions/cloudy_day.svg'
-import cloudy_night from '../../assets/img/weather_actions/cloudy_night.svg'
-import rainy_day from '../../assets/img/weather_actions/cloudy_rainy_day.svg'
-import rainy_night from '../../assets/img/weather_actions/cloudy_rainy_night.svg'
-import snowy_day from '../../assets/img/weather_actions/cloudy_snowy_day.svg'
-import snowy_night from '../../assets/img/weather_actions/cloudy_snowy_night.svg'
+import day from '../assets/img/weather_actions/day.svg'
+import night from '../assets/img/weather_actions/night.svg'
+import cloudy_day from '../assets/img/weather_actions/cloudy_day.svg'
+import cloudy_night from '../assets/img/weather_actions/cloudy_night.svg'
+import rainy_day from '../assets/img/weather_actions/cloudy_rainy_day.svg'
+import rainy_night from '../assets/img/weather_actions/cloudy_rainy_night.svg'
+import snowy_day from '../assets/img/weather_actions/cloudy_snowy_day.svg'
+import snowy_night from '../assets/img/weather_actions/cloudy_snowy_night.svg'
 
 
 const dir_list = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW']
@@ -82,7 +82,7 @@ export const getWeatherData = (async (zip)=> {
     })
   })
 
-  forecast_list = forecast_list.forEach((hour)=> { 
+  forecast_list.forEach((hour)=> { 
     item_count ++ 
       let dt_txt_split = hour.dt_txt.split(' ')[1]
       let _time = moment(dt_txt_split, 'HH:mm:ss').format('hha')
@@ -105,7 +105,7 @@ export const getWeatherData = (async (zip)=> {
     forecast_days,
     has_data: true
   }  
-  // log('WEATHER_DATA-> ', weather_data.forecast_days)
+  // log('WEATHER_DATA-> ', weather_data)
   // SEND TO STORE
   store.dispatch({
     type: 'SET_WTHR_DATA',
@@ -146,25 +146,26 @@ export const getWeatherImg = ((description, hour = moment().format('H'))=> {
     }
   })
 
-  if (description.toLowerCase() === 'clear') {
+  description = description.toLowerCase()
+  if (description=== 'clear') {
     if (is_daytime(hour)) {
       return (day)
     } else {
       return (night)
     }
-  } else if (description.toLowerCase() === 'clouds') {
+  } else if (description === 'clouds' || description === 'haze') {
     if (is_daytime(hour)) {
       return (cloudy_day)
     } else {
       return (cloudy_night)
     }
-  } else if (description.toLowerCase() === 'rain') {
+  } else if (description === 'rain' || description === 'thunderstorm') {
     if (is_daytime(hour)) {
       return (rainy_day)
     } else {
       return (rainy_night)
     }
-  }  else if (description.toLowerCase() === 'snow') {
+  }  else if (description === 'snow') {
     if (is_daytime(hour)) {
       return (snowy_day)
     } else {
