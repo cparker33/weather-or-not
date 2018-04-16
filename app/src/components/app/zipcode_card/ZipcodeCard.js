@@ -34,10 +34,6 @@ class HomePage extends Component {
     }
   }
 
-  componentDidMount() {
-    // setTimeout(()=> { getWeatherData(89123) }, 1000) // DEV // 98101 99501
-  }
-
   handleZipInput = ((zipcode)=> {
     this.setState({zipcode})
   })
