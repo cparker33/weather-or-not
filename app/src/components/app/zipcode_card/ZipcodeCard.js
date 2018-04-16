@@ -51,6 +51,11 @@ class HomePage extends Component {
     clearWeatherData()
   })
   
+  handleKeyPress = (()=> {
+    let zip = this.state.zipcode
+    getWeatherData(zip)
+  })
+
   render() {
     return (
       <div className='app-component-wrapper'>
@@ -63,7 +68,8 @@ class HomePage extends Component {
           <article className='zip-text-input-wrapper'>
             <div>
               <TextInput icon='fa fa-map' maxWidth='220px' 
-                onChange={this.handleZipInput} placeholder='Zip Code' 
+                onChange={this.handleZipInput} onKeyPress={this.handleKeyPress} 
+                placeholder='Zip Code' 
               />
             </div>
           <div>

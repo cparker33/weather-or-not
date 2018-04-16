@@ -11,18 +11,6 @@ import PropTypes from 'prop-types'
 const log = console.log // eslint-disable-line no-unused-vars
 
 /*********************************
-  LOCAL API
-*********************************/
-
-/*********************************
-  COMPONENTS
-*********************************/
-
-/*********************************
-  LOCAL STYLE
- ********************************/
-
-/*********************************
   TEXT INPUT
 *********************************/
 class TextInput extends Component {
@@ -41,12 +29,18 @@ class TextInput extends Component {
     })
   }
 
+  handleKeyPress = ((e)=> {
+    if (e.key === 'Enter') {
+      this.props.onKeyPress()
+    }
+  })
+
   render() {
     const _props = this.props
     return (
       <div className="input-group mb-3" style={{maxWidth: _props.maxWidth}}>
         <input aria-describedby="basic-addon2" className="form-control app-text-input" 
-          onChange={this.handleTextInput}  placeholder={_props.placeholder} type="text" 
+          onChange={this.handleTextInput} onKeyPress={this.handleKeyPress} placeholder={_props.placeholder}  type="text" 
         />
         <div className="input-group-append">
           <span className="input-group-text" id="basic-addon2"> 
@@ -64,7 +58,8 @@ const mapStateToProps = state => ({
 
 TextInput.propTypes = {
   sys_state: PropTypes.object,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  onKeyPress: PropTypes.func
 }
 
 export default connect(mapStateToProps)(TextInput)
