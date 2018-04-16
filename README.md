@@ -1,7 +1,7 @@
 # Weather Or Not
   Simple weather app for WH
 
-[weather-or-Not](http://weather-or-not.surge.sh/)
+[Weather-or-Not](http://weather-or-not.surge.sh/)
 
 ---
 
