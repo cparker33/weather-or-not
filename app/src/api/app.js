@@ -28,9 +28,8 @@ import rainy_night from '../assets/img/weather_actions/cloudy_rainy_night.svg'
 import snowy_day from '../assets/img/weather_actions/cloudy_snowy_day.svg'
 import snowy_night from '../assets/img/weather_actions/cloudy_snowy_night.svg'
 
-
 const dir_list = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW']
-
+let refreshWeatherTimer
 
 const weather_api = (()=> {
   return axios.create({
@@ -90,6 +89,13 @@ export const getWeatherData = (async (zip)=> {
         hour_list.push(hour)
       }  
       if (item_count === 8) {
+        hour_list.sort(function(a, b){
+          let _a =  a.dt_txt.split(' ')[1]
+          let _b = b.dt_txt.split(' ')[1]
+          _a = Number(moment(_a, 'HH:mm:ss').format('H'))
+          _b = Number(moment(_b, 'HH:mm:ss').format('H'))
+          return _a - _b
+        })
         forecast_days.push(hour_list)
         hour_list = []
         item_count = 0
@@ -103,25 +109,43 @@ export const getWeatherData = (async (zip)=> {
     sunrise,
     today_obj,
     forecast_days,
+    zipcode: zip,
     has_data: true
   }  
-  // log('WEATHER_DATA-> ', weather_data)
+
+  
+
+  refreshWeatherTimer = setInterval(  
+    ()=> {
+      let zip_store = store.getState().app_state.weather_data.zipcode
+      let has_data = store.getState().app_state.weather_data.has_data
+      if (has_data) {
+        getWeatherData(zip_store) 
+      }
+    },
+    900000
+  )
+
   // SEND TO STORE
   store.dispatch({
     type: 'SET_WTHR_DATA',
     weather_data
   })
+
 })
 
 /*********************************
   CLEAR WEATHER DATA
 **********************************/
 export const clearWeatherData = (async ()=> {
+  clearInterval(refreshWeatherTimer)
+
   let weather_data = {
     city: null,
     time_stamp: null,
     today_obj: null,
     forecast_list: null,
+    zipcode: null,
     has_data: false
   }  
 

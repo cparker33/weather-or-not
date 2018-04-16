@@ -24,30 +24,6 @@
 }
 
 
-/*********************
-  BREAKPOINTS
-*********************/
-@mixin for-xs {
-  @media (max-width: 500px) { @content; }
-}
-@mixin for-sm {
-  @media (max-width: 599px) { @content; }
-}
-@mixin for-md {
-  @media (min-width: 600px) { @content; }
-}
-@mixin for-lg {
-  @media (min-width: 900px) { @content; }
-}
-@mixin for-xl {
-  @media (min-width: 1200px) { @content; }
-}
-
-
-
-/*********************
-  BREAKPOINTS
-*********************/
 @mixin push-auto {
   margin: { 
       left: auto;
@@ -151,54 +127,3 @@
   justify-content: space-between;
   -ms-flex-pack: space-between;
 }
-
-
-
-@mixin keyframes($animationName) {
-  @-webkit-keyframes #{$animationName} {
-    @content;
-  }
-  @-moz-keyframes #{$animationName} {
-    @content;
-  }
-  @-o-keyframes #{$animationName} {
-    @content;
-  }
-  @keyframes #{$animationName} {
-    @content;
-  }
-}
-
-@mixin animate($name, $duration, $delay, $iteration, $direction) {
-  -webkit-animation-duration: $duration;
-  -moz-animation-duration: $duration;
-  -o-animation-duration: $duration;
-  animation-duration: $duration;
-  -webkit-animation-iteration-count: $iteration;
-  -moz-animation-iteration-count: $iteration;
-  -o-animation-iteration-count: $iteration;
-  animation-iteration-count: $iteration;
-  -webkit-animation-name: $name;
-  -moz-animation-name: $name;
-  -o-animation-name: $name;
-  animation-name: $name;
-  -webkit-animation-direction: $direction;
-  -moz-animation-direction: $direction;
-  -o-animation-direction: $direction;
-  animation-direction: $direction;
-  -webkit-animation-fill-mode: forwards;
-  -moz-animation-fill-mode: forwards;
-  -o-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-  -webkit-animation-delay: $delay;
-  -moz-animation-delay: $delay;
-  -o-animation-delay: $delay;
-  animation-delay: $delay;
-}
-
-
-
-
-
-
-
